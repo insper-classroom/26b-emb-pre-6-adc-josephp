@@ -56,7 +56,7 @@ volatile int flg_timer = 0;
                 alarme_ligado2=0;
             }
             if(alarme_ligado1==0){
-                add_repeating_timer_ms(300,timer_callback,NULL,&timer);
+                add_repeating_timer_ms(150,timer_callback,NULL,&timer);
                 alarme_ligado1=1;
             }
         }
@@ -67,7 +67,7 @@ volatile int flg_timer = 0;
                 alarme_ligado1=0;
             }
             if(alarme_ligado2==0){
-                add_repeating_timer_ms(500,timer_callback,NULL,&timer);
+                add_repeating_timer_ms(400,timer_callback,NULL,&timer);
                 alarme_ligado2=1;
             }
         }
