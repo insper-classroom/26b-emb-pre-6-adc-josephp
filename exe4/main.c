@@ -22,8 +22,8 @@ volatile int flg_timer = 0;
  
  /**
   * 0..1.0V: Desligado
-  * 1..2.0V: 150 ms
-  * 2..3.3V: 400 ms
+  * 1..2.0V: 300 ms
+  * 2..3.3V: 500 ms
   */
  int main() {
     stdio_init_all();
@@ -31,8 +31,8 @@ volatile int flg_timer = 0;
     gpio_init(PIN_LED_B);
     gpio_set_dir(PIN_LED_B, GPIO_OUT);
     gpio_put(PIN_LED_B,0);
-    adc_gpio_init(26);
-    adc_select_input(0);
+    adc_gpio_init(28);
+    adc_select_input(2);
     int alarme_ligado1=0;
     int alarme_ligado2=0;
     int estado=0;
@@ -56,7 +56,7 @@ volatile int flg_timer = 0;
                 alarme_ligado2=0;
             }
             if(alarme_ligado1==0){
-                add_repeating_timer_ms(150,timer_callback,NULL,&timer);
+                add_repeating_timer_ms(300,timer_callback,NULL,&timer);
                 alarme_ligado1=1;
             }
         }
@@ -67,7 +67,7 @@ volatile int flg_timer = 0;
                 alarme_ligado1=0;
             }
             if(alarme_ligado2==0){
-                add_repeating_timer_ms(400,timer_callback,NULL,&timer);
+                add_repeating_timer_ms(500,timer_callback,NULL,&timer);
                 alarme_ligado2=1;
             }
         }
