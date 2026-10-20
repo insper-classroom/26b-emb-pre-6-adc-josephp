@@ -25,7 +25,6 @@ void data_task(void *p) {
 
 void process_task(void *p) {
     int data = 0;
-    int contador = 0;
     int soma = 0;
     int valores[5] = {0};
     int pos = 0;
