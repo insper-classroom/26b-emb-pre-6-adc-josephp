@@ -29,7 +29,6 @@ void process_task(void *p) {
     int soma = 0;
     int valores[5] = {0};
     int pos = 0;
-    int media = 0;
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             soma -= valores[pos];  // Remove da soma o valor mais antigo do vetor
@@ -43,7 +42,7 @@ void process_task(void *p) {
                 }
 
             if (contador == 5) {
-                media = soma / 5;
+                int media = soma / 5;
                 printf("%d\n", media);
                 }
 
