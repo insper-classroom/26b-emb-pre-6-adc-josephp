@@ -25,15 +25,28 @@ void data_task(void *p) {
 
 void process_task(void *p) {
     int data = 0;
-
+    int contador = 0;
+    int soma = 0;
+    int valores[5] = {0};
+    int pos = 0;
+    int media = 0;
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
-            // implementar filtro aqui!
+            soma -= valores[pos];  // Remove da soma o valor mais antigo do vetor
+            valores[pos] = data;   // Coloca o novo valor recebido na posição do mais antigo
+            soma += data;     // Adiciona o novo valor à soma
 
+            pos = (pos + 1) % 5;
 
+            if (contador < 5) {
+                contador++;
+                }
 
+            if (contador == 5) {
+                media = soma / 5;
+                printf("%d\n", media);
+                }
 
-            // deixar esse delay!
             vTaskDelay(pdMS_TO_TICKS(50));
         }
     }
